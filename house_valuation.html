@@ -6,7 +6,10 @@
     <title>House Valuation</title>
     <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- <link rel="stylesheet" href="css/house_valuation.css"> -->
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnWt0xjKSc5kJJrfkeiAwe23Ys56qHD_k"></script> -->
@@ -31,69 +34,87 @@
       <main>
         <div class="content-wrapper">
           <div class="left-section">
-            <h1>
-              Your <span>House Valuation.</span> is Almost Ready.
-              
-            </h1>
+            <h1>Your <span>House Valuation.</span> is Almost Ready.</h1>
             <p class="subtitle">Fastest House Valuation.</p>
             <p class="instructions">Where can we send it?</p>
 
             <div class="house-valuation">
-              <form id="house-valuation-form" class="form" action="final_page.html" novalidate>
+              <form
+                id="house-valuation-form"
+                class="form"
+                action="final_page.html"
+                novalidate
+              >
                 <div class="form-group">
                   <label for="fname"
-                  >First Name: <span class="required">*</span></label
-                >
-                <input
-                  type="text"
-                  id="fname"
-                  name="fname"
-                  placeholder="First Name"
-                  required
-                />
+                    >First Name: <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="fname"
+                    name="fname"
+                    placeholder="First Name"
+                    required
+                  />
                 </div>
 
                 <div class="form-group">
                   <label for="lname"
-                  >Last Name: <span class="required">*</span></label
-                >
-                <input
-                  type="text"
-                  id="lname"
-                  name="lname"
-                  placeholder="Last Name"
-                  required
-                />
+                    >Last Name: <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="lname"
+                    name="lname"
+                    placeholder="Last Name"
+                    required
+                  />
                 </div>
-               
+
                 <div class="form-group">
                   <label for="email"
-                  >Email Address: <span class="required">*</span></label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Email Address"
-                  required
-                />
+                    >Email Address: <span class="required">*</span></label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                  />
                 </div>
                 <div class="checkbox-container">
-                  <input type="checkbox" id="agreement" name="agreement" required checked>
+                  <input
+                    type="checkbox"
+                    id="agreement"
+                    name="agreement"
+                    required
+                    checked
+                  />
                   <label for="agreement">
-                    By clicking Submit, you agree to receive calls and texts, including by autodialer, prerecorded messages, and artificial voice, and email from Prudent Home Buyers or one of its <a href="#">Partners</a> but not as a condition of any purchase. Message and data rates may apply. Message frequency varies. Text HELP for help. Text STOP to cancel. You also agree to our 
-                    <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
+                    By clicking Submit, you agree to receive calls and texts,
+                    including by autodialer, prerecorded messages, and
+                    artificial voice, and email from Prudent Home Buyers or one
+                    of its <a href="#">Partners</a> but not as a condition of
+                    any purchase. Message and data rates may apply. Message
+                    frequency varies. Text HELP for help. Text STOP to cancel.
+                    You also agree to our <a href="#">Terms & Conditions</a> and
+                    <a href="#">Privacy Policy</a>.
                   </label>
                 </div>
                 <div class="button-container">
-                  <div id="spinner" class="spinner" style="display: none;"></div>
-                  <p id="loading-text" style="display: none; text-align: center; margin-top: 10px;"> Crunching the numbers to determine your home’s worth—almost there!</p>
+                  <div id="spinner" class="spinner" style="display: none"></div>
+                  <p
+                    id="loading-text"
+                    style="display: none; text-align: center; margin-top: 10px"
+                  >
+                    Crunching the numbers to determine your home’s worth—almost
+                    there!
+                  </p>
                   <button type="submit" id="confirm-btn">
                     Get House Valuation
                   </button>
                 </div>
-
-                
               </form>
             </div>
 
@@ -115,116 +136,114 @@
     </div>
     <script>
       $(document).ready(function () {
-  // Keep the existing validation
-  $('#house-valuation-form').validate({
-    rules: {
-      fname: {
-        required: true,
-        minlength: 2
-      },
-      lname: {
-        required: true,
-        minlength: 2
-      },
-      email: {
-        required: true,
-        email: true
-      }
-    },
-    messages: {
-      fname: {
-        required: 'Please enter your first name.',
-        minlength: 'First name must be at least 2 characters long.'
-      },
-      lname: {
-        required: 'Please enter your last name.',
-        minlength: 'Last name must be at least 2 characters long.'
-      },
-      email: {
-        required: 'Please enter your email.',
-        email: 'Please enter a valid email address.'
-      }
-    },
-    submitHandler: function (form) {
-        // Show spinner
-  const spinner = document.getElementById('spinner');
-  const buttonContainer = document.querySelector('.button-container');
-  const loadingText = document.getElementById('loading-text');
-  spinner.style.display = 'block';
-  buttonContainer.style.top = '20px';
-  spinner.style.marginBottom = '20px';
-  loadingText.style.display = 'block';
-      // Extract values from the form
-      const fname = $('#fname').val();
-      const lname = $('#lname').val();
-      const email = $('#email').val();
-      
-      // Retrieve Zestimate value from localStorage
-      const zestimate = localStorage.getItem('Zestimate');
-      
-      if (!zestimate) {
-        setTimeout(() => {
-          // Hide spinner and reset button-container position after the process
-          spinner.style.display = 'none';
-          loadingText.style.display = 'none';
-          buttonContainer.style.top = '0';
-        }, 1000);
-        displayError('Zestimate value is missing.');
-        return;
+        // Keep the existing validation
+        $("#house-valuation-form").validate({
+          rules: {
+            fname: {
+              required: true,
+              minlength: 2,
+            },
+            lname: {
+              required: true,
+              minlength: 2,
+            },
+            email: {
+              required: true,
+              email: true,
+            },
+          },
+          messages: {
+            fname: {
+              required: "Please enter your first name.",
+              minlength: "First name must be at least 2 characters long.",
+            },
+            lname: {
+              required: "Please enter your last name.",
+              minlength: "Last name must be at least 2 characters long.",
+            },
+            email: {
+              required: "Please enter your email.",
+              email: "Please enter a valid email address.",
+            },
+          },
+          submitHandler: function (form) {
+            // Show spinner
+            const spinner = document.getElementById("spinner");
+            const buttonContainer = document.querySelector(".button-container");
+            const loadingText = document.getElementById("loading-text");
+            spinner.style.display = "block";
+            buttonContainer.style.top = "20px";
+            spinner.style.marginBottom = "20px";
+            loadingText.style.display = "block";
+            // Extract values from the form
+            const fname = $("#fname").val();
+            const lname = $("#lname").val();
+            const email = $("#email").val();
 
-      }
-      
-      // Prepare data to save
-      const dataToSave = [
-        { column: 'First_Name', value: fname },
-        { column: 'Last_Name', value: lname },
-        { column: 'Email', value: email },
-        { column: 'Zestimate', value: zestimate }
-      ];
-      
-      // Call API to save data
-      fetch('http://localhost:3005/v1/dataZestimate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ data: dataToSave }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Failed to save data');
-          }
-          return response.json();
-        })
-        .then((result) => {
-          // Redirect on success
-          window.location.href = 'final_page.html';
-        })
-        .catch((error) => {
-                  // Hide spinner
-        setTimeout(() => {
-          // Hide spinner and reset button-container position after the process
-          spinner.style.display = 'none';
-          loadingText.style.display = 'none';
-          buttonContainer.style.top = '0';
-        }, 1000); // Simulated delay of 3 seconds
-          console.error('Error:', error);
-          displayError('Failed to save data. Please try again.');
+            // Retrieve Zestimate value from localStorage
+            const zestimate = localStorage.getItem("Zestimate");
+
+            if (!zestimate) {
+              setTimeout(() => {
+                // Hide spinner and reset button-container position after the process
+                spinner.style.display = "none";
+                loadingText.style.display = "none";
+                buttonContainer.style.top = "0";
+              }, 1000);
+              displayError("Zestimate value is missing.");
+              return;
+            }
+
+            // Prepare data to save
+            const dataToSave = [
+              { column: "First_Name", value: fname },
+              { column: "Last_Name", value: lname },
+              { column: "Email", value: email },
+              { column: "Zestimate", value: zestimate },
+            ];
+
+            // Call API to save data
+            fetch("http://localhost:3005/v1/dataZestimate", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ data: dataToSave }),
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Failed to save data");
+                }
+                return response.json();
+              })
+              .then((result) => {
+                // Redirect on success
+                window.location.href = "final_page.html";
+              })
+              .catch((error) => {
+                // Hide spinner
+                setTimeout(() => {
+                  // Hide spinner and reset button-container position after the process
+                  spinner.style.display = "none";
+                  loadingText.style.display = "none";
+                  buttonContainer.style.top = "0";
+                }, 1000); // Simulated delay of 3 seconds
+                console.error("Error:", error);
+                displayError("Failed to save data. Please try again.");
+              });
+          },
         });
-    }
-  });
-  
-  // Function to display error messages
-  function displayError(message) {
-    let errorDiv = $('#error-message');
-    if (!errorDiv.length) {
-      errorDiv = $('<div id="error-message" class="error-msg"></div>');
-      $('#house-valuation-form').before(errorDiv);
-    }
-    errorDiv.text(message).show();
-  }
-});
 
+        // Function to display error messages
+        function displayError(message) {
+          let errorDiv = $("#error-message");
+          if (!errorDiv.length) {
+            errorDiv = $('<div id="error-message" class="error-msg"></div>');
+            $("#house-valuation-form").before(errorDiv);
+          }
+          errorDiv.text(message).show();
+        }
+      });
     </script>
   </body>
 </html>
