@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- <link rel="stylesheet" href="css/house_valuation.css"> -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnWt0xjKSc5kJJrfkeiAwe23Ys56qHD_k"></script> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnWt0xjKSc5kJJrfkeiAwe23Ys56qHD_k"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js"></script>
   </head>
@@ -83,11 +85,15 @@
                     <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
                   </label>
                 </div>
-                
+                <div class="button-container">
+                  <div id="spinner" class="spinner" style="display: none;"></div>
+                  <p id="loading-text" style="display: none; text-align: center; margin-top: 10px;"> Crunching the numbers to determine your home’s worth—almost there!</p>
+                  <button type="submit" id="confirm-btn">
+                    Get House Valuation
+                  </button>
+                </div>
 
-                <button type="submit" id="confirm-btn">
-                  Get House Valuation
-                </button>
+                
               </form>
             </div>
 
@@ -140,6 +146,14 @@
       }
     },
     submitHandler: function (form) {
+        // Show spinner
+  const spinner = document.getElementById('spinner');
+  const buttonContainer = document.querySelector('.button-container');
+  const loadingText = document.getElementById('loading-text');
+  spinner.style.display = 'block';
+  buttonContainer.style.top = '20px';
+  spinner.style.marginBottom = '20px';
+  loadingText.style.display = 'block';
       // Extract values from the form
       const fname = $('#fname').val();
       const lname = $('#lname').val();
@@ -149,8 +163,15 @@
       const zestimate = localStorage.getItem('Zestimate');
       
       if (!zestimate) {
+        setTimeout(() => {
+          // Hide spinner and reset button-container position after the process
+          spinner.style.display = 'none';
+          loadingText.style.display = 'none';
+          buttonContainer.style.top = '0';
+        }, 1000);
         displayError('Zestimate value is missing.');
         return;
+
       }
       
       // Prepare data to save
@@ -180,6 +201,13 @@
           window.location.href = 'final_page.html';
         })
         .catch((error) => {
+                  // Hide spinner
+        setTimeout(() => {
+          // Hide spinner and reset button-container position after the process
+          spinner.style.display = 'none';
+          loadingText.style.display = 'none';
+          buttonContainer.style.top = '0';
+        }, 1000); // Simulated delay of 3 seconds
           console.error('Error:', error);
           displayError('Failed to save data. Please try again.');
         });
