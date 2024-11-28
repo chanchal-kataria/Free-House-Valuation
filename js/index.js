@@ -155,6 +155,16 @@ document.querySelector('form').addEventListener('submit', (event) => {
 document.getElementById('confirm-btn').addEventListener('click', () => {
   const selectedAddress = JSON.parse(localStorage.getItem('Selected_Address'));
 
+  // Show spinner
+  const spinner = document.getElementById('spinner');
+  const buttonContainer = document.querySelector('.button-container');
+  const loadingText = document.getElementById('loading-text');
+  spinner.style.display = 'block';
+  buttonContainer.style.top = '20px';
+  spinner.style.marginBottom = '20px';
+  loadingText.style.display = 'block';
+  
+
   if (selectedAddress) {
     const { address, city, state, zip } = selectedAddress;
 
@@ -207,9 +217,21 @@ document.getElementById('confirm-btn').addEventListener('click', () => {
       .catch((error) => {
         console.error('Error:', error);
         alert('Failed to save data. Please try again.');
-      });
+      })
+      .finally(() => {
+        // Hide spinner
+        setTimeout(() => {
+          // Hide spinner and reset button-container position after the process
+          spinner.style.display = 'none';
+          loadingText.style.display = 'none';
+          buttonContainer.style.top = '0';
+        }, 1000); // Simulated delay of 3 seconds
+
+
+    });
   } else {
     alert('Please select an address before submitting!');
+    
   }
 });
 
