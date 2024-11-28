@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Address Input Section */
+.house-valuation {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.house-valuation label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.house-valuation input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 10px;
+  height: 57px;
+  font-size: 14px;
+}
+
+.house-valuation input:focus {
+  border-color: #1676f3;
+  box-shadow: 0 0 5px rgba(64, 131, 238, 0.5);
+  font-size: 14px;
+}
+
+.house-valuation:focus-within label {
+  color: #1676f3;
+  font-size: 14px;
+}
+
+input.invalid {
+  border-color: #e63946;
+}
+
+.error-message {
+  display: none;
+  color: #e63946;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}

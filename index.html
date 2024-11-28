@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House Valuation</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj7i4xX8216mt_VJbFFouzTT8OsJgtUCI&libraries=places"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <img src="assets/logo.png" alt="House Illustration" />
+        </div>
+        <div class="links">
+          <a href="https://prudenthomebuyers.com/privacy.html"
+            >Privacy Policy</a
+          >
+          <a href="https://prudenthomebuyers.com/terms.html">Terms of Use</a>
+        </div>
+      </header>
+      <main>
+        <div class="content-wrapper">
+          <div class="left-section">
+            <h1>
+              Quickest and Easiest Way to Check Current Market
+              <span>House Valuation.</span>
+            </h1>
+            <p>
+              Based on historical data from the last year and AI predictions for
+              the next 6 months.
+            </p>
+            <div class="address-input">
+              <form
+                id="address-form"
+                action="house_valuation.html"
+                class="form"
+                novalidate
+              >
+                <!-- Label with Required Asterisk -->
+                <label for="address">
+                  Address: <span class="required">*</span>
+                </label>
+
+                <!-- Input Field -->
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="Park Street 2, Birmingham"
+                  required
+                />
+                <div id="suggestions"></div>
+
+                <!-- Validation Error Message -->
+                <div class="error-message" id="address-error">
+                  Please enter your address.
+                </div>
+
+                <!-- Google Map Integration -->
+                <div id="map" style="height: 300px; width: 100%; display: none;">
+                  <!--
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345094693!2d144.9537353156395!3d-37.81627974202108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5778d1ec43b4bfa!2sPark%20St%2C%20Melbourne%20VIC%203001%2C%20Australia!5e0!3m2!1sen!2s!4v1637185372106!5m2!1sen!2s"
+                    width="100%"
+                    height="168"
+                    bottom="10"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                  > -->
+                  </iframe>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="confirm-btn">Confirm Address</button>
+              </form>
+            </div>
+
+            <div class="reviews">
+              <img src="assets/Frame 516.png" alt="Google Reviews" />
+              <img src="assets/google.png" alt="Google Reviews" />
+              <img src="assets/BBB.png" alt="A+ Badge" />
+            </div>
+          </div>
+          <div class="right-section">
+            <img src="assets/main_img.png" alt="House Illustration" />
+          </div>
+        </div>
+      </main>
+      <footer>
+        <a href="https://prudenthomebuyers.com/terms.html">Terms of Use</a>
+        <a href="https://prudenthomebuyers.com/privacy.html">Privacy Policy</a>
+      </footer>
+    </div>
+    <script src="js/index.js"></script>
+    <!--<script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const addressForm = document.getElementById("address-form");
+        const addressInput = document.getElementById("address");
+        const addressError = document.getElementById("address-error");
+
+        // Validate the input field on form submission
+        addressForm.addEventListener("submit", (event) => {
+          if (addressInput.value.trim() === "") {
+            event.preventDefault(); // Prevent form submission
+            addressInput.classList.add("invalid"); // Add invalid style
+            addressError.style.display = "block"; // Show error message
+          } else {
+            addressInput.classList.remove("invalid"); // Remove invalid style
+            addressError.style.display = "none"; // Hide error message
+          }
+        });
+
+        // Hide error message and invalid styles when the user starts typing
+        addressInput.addEventListener("input", () => {
+          if (addressInput.value.trim() !== "") {
+            addressInput.classList.remove("invalid");
+            addressError.style.display = "none";
+          }
+        });
+      });
+    </script> -->
+  </body>
+</html>
