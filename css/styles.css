@@ -151,6 +151,43 @@ input.invalid {
   margin-top: 5px;
 }
 
+/* Loader  */
+
+.button-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    top: 0; /* Default top position */
+  transition: top 0.3s ease; /* Smooth transition for top change */
+}
+
+.spinner {
+  position: none;
+  bottom: 60px; /* Adjust the distance above the button */
+  width: 40px;
+  height: 40px;
+  border: 5px dotted rgba(0, 0, 0, 0.1);
+  border-top-color: #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+#loading-text {
+  font-size: 14px;
+  color: #555;
+}
+
+
+
 /* House valuation form css */
 
 .instructions {
