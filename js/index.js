@@ -134,6 +134,8 @@ document.querySelector('form').addEventListener('submit', (event) => {
           });
   
           suggestionsDiv.appendChild(suggestion);
+          
+
         });
       }
     });
@@ -177,7 +179,9 @@ document.getElementById('confirm-btn').addEventListener('click', () => {
     ];
 
     // Step 1: Call the getZestimateValue API
-    fetch('http://localhost:3005/v1/getZestimateValue', {
+    //localhost http://localhost:3005/v1/getZestimateValue
+    //server https://prudenthomebuyers.com/api/v1/getZestimateValue
+    fetch('https://prudenthomebuyers.com/api/v1/getZestimateValue', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -196,7 +200,9 @@ document.getElementById('confirm-btn').addEventListener('click', () => {
         localStorage.setItem('Zestimate', zestimate);
 
         // Step 2: Call the main save data API
-        return fetch('http://localhost:3005/v1/dataZestimate', {
+        //localhost http://localhost:3005/v1/dataZestimate
+        //server https://prudenthomebuyers.com/api/v1/dataZestimate
+        return fetch('https://prudenthomebuyers.com/api/v1/dataZestimate', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -211,7 +217,7 @@ document.getElementById('confirm-btn').addEventListener('click', () => {
         return response.json();
       })
       .then((saveDataResponse) => {
-        console.log('Data saved successfully:', saveDataResponse);
+        localStorage.setItem('userId', saveDataResponse.userId);
         window.location.href = 'house_valuation.html';
       })
       .catch((error) => {
@@ -225,7 +231,7 @@ document.getElementById('confirm-btn').addEventListener('click', () => {
           spinner.style.display = 'none';
           loadingText.style.display = 'none';
           buttonContainer.style.top = '0';
-        }, 1000); // Simulated delay of 3 seconds
+        }, 3000); // Simulated delay of 3 seconds
 
 
     });
