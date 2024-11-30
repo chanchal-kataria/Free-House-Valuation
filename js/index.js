@@ -108,38 +108,91 @@ document.querySelector('form').addEventListener('submit', (event) => {
   
   
   // Fetch suggestions from Google
-  function fetchSuggestions(query) {
-    const service = new google.maps.places.AutocompleteService();
-    const options = {
-        input: query,
-        componentRestrictions: { country: 'us' } // Restrict to USA
-      };
-    service.getPlacePredictions({ input: query }, (predictions, status) => {
-      const suggestionsDiv = document.getElementById('suggestions');
-      if (!suggestionsDiv) return;
+  // function fetchSuggestions(query) {
+  //   const service = new google.maps.places.AutocompleteService();
+  //   const options = {
+  //       input: query,
+  //       componentRestrictions: { country: 'us' } // Restrict to USA
+  //     };
+  //   service.getPlacePredictions({ input: query }, (predictions, status) => {
+  //     const suggestionsDiv = document.getElementById('suggestions');
+  //     if (!suggestionsDiv) return;
   
-      suggestionsDiv.innerHTML = ''; // Clear previous suggestions
-      suggestionsDiv.style.display = 'block'; // Show suggestions
+  //     suggestionsDiv.innerHTML = ''; // Clear previous suggestions
+  //     suggestionsDiv.style.display = 'block'; // Show suggestions
   
-      if (status === google.maps.places.PlacesServiceStatus.OK && predictions) {
-        predictions.forEach((prediction) => {
-          const suggestion = document.createElement('div');
-          suggestion.textContent = prediction.description;
-          suggestion.className = 'suggestion-item';
+  //     if (status === google.maps.places.PlacesServiceStatus.OK && predictions) {
+  //       predictions.forEach((prediction) => {
+  //         const suggestion = document.createElement('div');
+  //         suggestion.textContent = prediction.description;
+  //         suggestion.className = 'suggestion-item';
   
-          suggestion.addEventListener('click', () => {
-            fetchPlaceDetails(prediction.place_id);
-            suggestionsDiv.innerHTML = ''; // Clear suggestions
-            suggestionsDiv.style.display = 'none'; // Hide suggestions container
-          });
+  //         suggestion.addEventListener('click', () => {
+  //           fetchPlaceDetails(prediction.place_id);
+  //           suggestionsDiv.innerHTML = ''; // Clear suggestions
+  //           suggestionsDiv.style.display = 'none'; // Hide suggestions container
+  //         });
   
-          suggestionsDiv.appendChild(suggestion);
+  //         suggestionsDiv.appendChild(suggestion);
           
 
+  //       });
+  //     }
+  //   });
+  // }
+
+  // Fetch suggestions from Google
+function fetchSuggestions(query) {
+  // debugger;
+  const service = new google.maps.places.AutocompleteService();
+  const options = {
+    input: query,
+    componentRestrictions: { country: 'us' }, // Restrict to USA
+  };
+
+  service.getPlacePredictions(options, (predictions, status) => {
+    const suggestionsDiv = document.getElementById('suggestions');
+    if (!suggestionsDiv) return;
+
+    
+
+    // Clear previous suggestions and display the suggestions container
+    suggestionsDiv.innerHTML = '';
+    suggestionsDiv.style.display = 'block';
+
+    if (status === google.maps.places.PlacesServiceStatus.OK && predictions) {
+      predictions.forEach((prediction) => {
+        // Create a suggestion item
+        const suggestion = document.createElement('div');
+        suggestion.className = 'suggestion-item';
+
+        // Add text content
+        suggestion.textContent = prediction.description;
+
+        // Add click event to fetch place details
+        suggestion.addEventListener('click', () => {
+          fetchPlaceDetails(prediction.place_id);
+          suggestionsDiv.innerHTML = ''; // Clear suggestions
+          suggestionsDiv.style.display = 'none'; // Hide suggestions container
         });
-      }
-    });
-  }
+
+        suggestionsDiv.appendChild(suggestion);
+      });
+
+      // Add an image at the bottom of the suggestions list
+      const bottomImage = document.createElement('img');
+      bottomImage.src = 'assets/google2.jpeg'; // Replace with the desired image URL
+      bottomImage.alt = 'Bottom Image';
+      bottomImage.className = 'suggestion-bottom-img';
+
+      suggestionsDiv.appendChild(bottomImage);
+    } else {
+      // Hide suggestions container if no predictions are available
+      suggestionsDiv.style.display = 'none';
+    }
+  });
+}
+
   
   
   // Attach input event to fetch suggestions
