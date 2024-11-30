@@ -82,6 +82,10 @@ main h1 {
   margin-bottom: 10px;
 }
 
+main h1 br {
+  display: none;
+}
+
 main h1 span {
   color: #854dfc;
 }
@@ -399,7 +403,7 @@ footer a {
 
 #suggestions {
   display: none; /* Hide suggestions by default */
-  position: absolute;
+  position: relative;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -569,7 +573,7 @@ footer a {
   }
   main .left-section {
     flex: 1;
-    width: 274px;
+    width: 329px;
   }
 
   main h1 {
@@ -583,7 +587,14 @@ footer a {
     text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+  
   }
+
+  main h1 br {
+    display:block;
+  }
+
+
 
   main p {
     font-size: 14px;
