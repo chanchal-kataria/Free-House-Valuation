@@ -266,7 +266,7 @@ input.invalid {
 
 .checkbox-container input[type="checkbox"] {
   width: 8px;
-  height: 12px;
+  height: 6px;
   margin-right: 5px;
   transform: scale(1.2); /* Enlarges the checkbox */
   cursor: pointer;
