@@ -32,7 +32,9 @@
             <div class="header">Thank You!</div>
             <div class="sub-header">Here's the Valuation of <span>Your Home</span></div>
             <div class="estimate-value">Your Estimated Home Value:</div>
+           
             <div class="home-value">$8000</div>
+
             <div class="note">(Based on recent market trends in your area)</div>
             <div class="news-box">
                 <h2>Great News!</h2>
@@ -51,7 +53,29 @@
         <a href="https://prudenthomebuyers.com/privacy.html">Privacy Policy</a>
       </footer>
     </div>
-    <script>
+
+    <script> 
+      document.addEventListener("DOMContentLoaded", () => {
+      // Retrieve values from localStorage
+      const zestimate = localStorage.getItem("Zestimate");
+      const userId = localStorage.getItem("userId");
+
+      // Check if zestimate exists
+      if (zestimate) {
+        // Update the div content
+        const homeValueDiv = document.querySelector(".home-value");
+        if (homeValueDiv) {
+          homeValueDiv.textContent = `$${zestimate}`;
+        }
+
+        // Clear the localStorage
+        localStorage.removeItem("Zestimate");
+        localStorage.removeItem("userId");
+      }
+      });
+
+    </script>
+    <!--<script>
       document.addEventListener("DOMContentLoaded", () => {
         const addressForm = document.getElementById("address-form");
         const addressInput = document.getElementById("address");
@@ -77,6 +101,6 @@
           }
         });
       });
-    </script>
+    </script> -->
   </body>
 </html>
