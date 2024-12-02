@@ -7,7 +7,8 @@ document.querySelector('form').addEventListener('submit', (event) => {
   let map, marker;
   
   // Initialize Google Map
-  function initMap(lat, lng) {
+  function initMap(lat, lng, zoom = 14) {
+    //const defaultLocation = { lat: 37.0902, lng: -95.7129 }; // Geographic center of the US
     const mapDiv = document.getElementById('map');
     mapDiv.style.display = 'block'; // Show the map div
   
@@ -15,7 +16,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
   
     map = new google.maps.Map(mapDiv, {
       center: location,
-      zoom: 14,
+      zoom: zoom,
     });
   
     marker = new google.maps.Marker({
@@ -107,40 +108,8 @@ document.querySelector('form').addEventListener('submit', (event) => {
   }
   
   
-  // Fetch suggestions from Google
-  // function fetchSuggestions(query) {
-  //   const service = new google.maps.places.AutocompleteService();
-  //   const options = {
-  //       input: query,
-  //       componentRestrictions: { country: 'us' } // Restrict to USA
-  //     };
-  //   service.getPlacePredictions({ input: query }, (predictions, status) => {
-  //     const suggestionsDiv = document.getElementById('suggestions');
-  //     if (!suggestionsDiv) return;
-  
-  //     suggestionsDiv.innerHTML = ''; // Clear previous suggestions
-  //     suggestionsDiv.style.display = 'block'; // Show suggestions
-  
-  //     if (status === google.maps.places.PlacesServiceStatus.OK && predictions) {
-  //       predictions.forEach((prediction) => {
-  //         const suggestion = document.createElement('div');
-  //         suggestion.textContent = prediction.description;
-  //         suggestion.className = 'suggestion-item';
-  
-  //         suggestion.addEventListener('click', () => {
-  //           fetchPlaceDetails(prediction.place_id);
-  //           suggestionsDiv.innerHTML = ''; // Clear suggestions
-  //           suggestionsDiv.style.display = 'none'; // Hide suggestions container
-  //         });
-  
-  //         suggestionsDiv.appendChild(suggestion);
-          
-
-  //       });
-  //     }
-  //   });
-  // }
-
+// display default map on page load
+  initMap(37.0902, -95.7129, 4);
   // Fetch suggestions from Google
 function fetchSuggestions(query) {
   // debugger;
