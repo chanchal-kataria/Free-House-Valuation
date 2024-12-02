@@ -82,6 +82,10 @@ main h1 {
   margin-bottom: 10px;
 }
 
+main h1 br {
+  display: none;
+}
+
 main h1 span {
   color: #854dfc;
 }
@@ -385,7 +389,7 @@ footer {
   padding: 10px 20px;
   color: white;
   text-align: center;
-  z-index: 1000; /* Ensure it's on top of the content */
+  z-index: 1000;
 }
 
 footer a {
@@ -397,26 +401,52 @@ footer a {
   font-family: "Roboto";
 }
 
+/* Style for the suggestion container */
 #suggestions {
-  display: none; /* Hide suggestions by default */
-  position: absolute;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  max-height: 200px;
-  overflow-y: auto;
+  position: relative;
   z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
+  max-height: 300px;
+  margin-top: 5px;
+  overflow: hidden; 
+  margin-bottom: 25px;
+
 }
 
+/* Scrolling container for the suggestions */
+.suggestions-list {
+  max-height: 250px; 
+  overflow-y: auto;
+   padding-right: 5px; 
+}
+
+/* Style for individual suggestion items */
 .suggestion-item {
   padding: 10px;
   cursor: pointer;
-  font-size: 14px;
+  transition: background-color 0.2s;
 }
 
 .suggestion-item:hover {
-  background: #f1f1f1;
+  background-color: #f0f0f0;
+}
+
+/* Fixed bottom image */
+.suggestion-bottom-img {
+  display: block;
+  width: 129px;
+  max-width: 90%;
+  height: auto;
+  margin: 15px;
+  position: sticky;
+  float: right;
+  bottom: 0; 
+  background-color: #fff; 
+  z-index: 10; 
+  padding-bottom: 9px;
+  
 }
 
 
@@ -569,7 +599,7 @@ footer a {
   }
   main .left-section {
     flex: 1;
-    width: 274px;
+    width: 329px;
   }
 
   main h1 {
@@ -583,7 +613,14 @@ footer a {
     text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+  
   }
+
+  main h1 br {
+    display:block;
+  }
+
+
 
   main p {
     font-size: 14px;
