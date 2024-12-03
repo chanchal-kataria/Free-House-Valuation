@@ -6,11 +6,19 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-y: scroll; /* Allow vertical scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Edge */
 }
 
 .container {
@@ -20,12 +28,18 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow: scroll;
+}
+
+.container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Edge */
 }
 
 main {
   flex-grow: 1;
   padding: 60px 20px 60px;
   overflow-y: auto;
+  overflow: hidden;
 }
 
 /* Header Section */
@@ -163,7 +177,7 @@ input.invalid {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-    top: 0; /* Default top position */
+  top: 0; /* Default top position */
   transition: top 0.3s ease; /* Smooth transition for top change */
 }
 
@@ -184,13 +198,10 @@ input.invalid {
   }
 }
 
-
 #loading-text {
   font-size: 14px;
   color: #555;
 }
-
-
 
 /* House valuation form css */
 
@@ -410,16 +421,15 @@ footer a {
   width: 100%;
   max-height: 300px;
   margin-top: 5px;
-  overflow: hidden; 
+  overflow: hidden;
   margin-bottom: 25px;
-
 }
 
 /* Scrolling container for the suggestions */
 .suggestions-list {
-  max-height: 250px; 
+  max-height: 250px;
   overflow-y: auto;
-   padding-right: 5px; 
+  padding-right: 5px;
 }
 
 /* Style for individual suggestion items */
@@ -442,16 +452,11 @@ footer a {
   margin: 15px;
   position: sticky;
   float: right;
-  bottom: 0; 
-  background-color: #fff; 
-  z-index: 10; 
+  bottom: 0;
+  background-color: #fff;
+  z-index: 10;
   padding-bottom: 9px;
-  
 }
-
-
-
-
 
 /* Extra-Large Screens (Wide Desktops) */
 @media (min-width: 1200px) {
@@ -496,7 +501,6 @@ footer a {
   .left-section {
     padding: 20px;
   }
-
 
   .right-section {
     flex: 0.5;
@@ -613,14 +617,11 @@ footer a {
     text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-  
   }
 
   main h1 br {
-    display:block;
+    display: block;
   }
-
-
 
   main p {
     font-size: 14px;

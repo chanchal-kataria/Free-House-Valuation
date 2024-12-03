@@ -1,217 +1,278 @@
- /* Loader Styling */
- @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* Loader Styling */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
- * {
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 8px;
-      text-align: center;
-  }
-
-
-
-.home-img img {
-    /* max-width: 100%; */
-    height: auto;
+* {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
 }
 
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  text-align: center;
+}
 
-  .header {
-    font-size: 36px;
-    margin-bottom: 10px;
+.home-img img {
+  /* max-width: 100%; */
+  height: auto;
+}
+
+.header {
+  font-size: 36px;
+  /* margin-bottom: 10px; */
 }
 
 .sub-header {
-    font-size: 36px;
-    margin-bottom: 12px;
+  font-size: 36px;
+  margin-bottom: 12px;
 }
 .estimate-value {
   font-size: 15px;
-  color: #231F20;
+  color: #231f20;
 }
-.sub-header span{
-  color: #854DFC;
+.sub-header span {
+  color: #854dfc;
 }
+.estimate-value span {
+  color: #854dfc;
+  font-weight: 800;
+  text-decoration: underline;
+  font-size: 18px;
+  line-height: 21.09px;
+  display: inline-block;
+  overflow: hidden; /* Hides the text until it's typed */
+  white-space: nowrap;
+  border-right: 2px solid black; /* Simulates a blinking cursor */
+  animation: typing 2s steps(6, end) infinite,
+    blink-cursor 0.5s step-end infinite;
+}
+.reason {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21.44px;
+  color: #1a293dd4;
+}
+
+@keyframes typing {
+  from {
+    width: 0; /* Start with no width */
+  }
+  to {
+    width: 6ch; /* Expand to show the full text */
+  }
+}
+
+@keyframes blink-cursor {
+  50% {
+    border-color: transparent; /* Makes the cursor disappear and reappear */
+  }
+}
+
 .home-value {
-    font-size: 36px;
-    color:#777778;
-    margin: 10px 0;
-    font-weight: 800;
+  font-size: 36px;
+  color: #777778;
+  margin: 10px 0;
+  font-weight: 800;
 }
 
 .note {
-    font-size: 12px;
-    color: #1A293DD4;
-    margin-bottom: 30px;
-    font-weight: 400;
+  font-size: 12px;
+  color: #1a293dd4;
+  margin-bottom: 30px;
+  font-weight: 400;
 }
 
 .news-box {
-    padding: 20px;
-    background-color: #ffffff;
-    /* border: 1px solid #d6c6ff; */
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0px 9px 46px 8px #00000014;
-
+  padding: 20px;
+  background-color: #ffffff;
+  /* border: 1px solid #d6c6ff; */
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0px 9px 46px 8px #00000014;
 }
-
 
 .news-box h2 {
   font-size: 28px;
   font-weight: 800;
-  color: #854DFC;
+  color: #854dfc;
   margin-bottom: 10px;
 }
 
 .news-box-p {
-  font-size: 18px;
-  color: #1A293DD4;
-  line-height: 21.12px;
+  font-size: 22px;
+  color: #1a293dd4;
+  line-height: 29.48px;
   font-weight: 600;
+  margin-top: 15px;
 }
 .news-box-p br {
   display: none;
 }
 
-  .buyer-info {
-    font-size: 28px;
-    line-height: 37.52px;
-    font-weight: 700;
-    color: #1B2B41;
-    text-align: center;
-    font-family: "Plus Jakarta Sans", sans-serif;
+.buyer-info {
+  font-size: 28px;
+  line-height: 37.52px;
+  font-weight: 700;
+  color: #1b2b41;
+  text-align: center;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.buyer-info span {
+  color: #6b44db;
+  font-weight: 700;
+}
+
+.cta-button {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.cta-button button {
+  background-color: #6b44db;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  width: 100%;
+  max-width: 300px;
+}
+
+.cta-button button:hover {
+  background-color: #65db4d;
+  color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cta-button button {
+    width: 100%;
   }
 
-  .buyer-info span {
-    color: #6b44db;
-    font-weight: 700;
+  h2 {
+    font-size: 18px;
+  }
+
+  .final_p {
+    font-size: 13px;
+  }
+
+  .great-news {
+    font-size: 16px;
+  }
+
+  .buyer-info {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 50px 0px 15px 0px;
+  }
+
+  .content {
+    padding: 20px 0px 20px 0px;
+  }
+
+  .home-img img {
+    width: 90px;
+  }
+
+  .header {
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 36px;
+  }
+  .sub-header {
+    font-size: 25px;
+    font-weight: 300;
+  }
+
+  .estimate-value {
+    font-size: 18px;
+    font-weight: 400px;
+    line-height: 21.09px;
+    color: #231f20;
+  }
+
+  .home-value {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 24px;
+  }
+  .note-card {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18.76px;
+    /* margin-bottom: 15px; */
+    color: #1a293dd4;
+  }
+
+  .news-box-p {
+    margin: 0px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 29.48px;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 30px;
+  }
+
+  .final_p {
+    font-size: 15px;
+    line-height: 13.76px;
+    font-weight: 400;
+    color: #1a293d;
+  }
+
+  .home-amount {
+    font-size: 32px;
+    line-height: 24px;
+    font-weight: 800;
+    color: #777778;
+  }
+  .card {
+    margin: 20px;
+  }
+
+  .card h2 {
+    color: #854dfc;
+    font-size: 28px;
+    line-height: 28px;
+    font-family: "roboto";
+    font-weight: 800;
+  }
+
+  .great-news {
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  .buyer-info {
+    font-size: 19px;
+    line-height: 32.52px;
   }
 
   .cta-button {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 0px;
   }
 
   .cta-button button {
-    background-color: #6b44db;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    width: 100%;
-    max-width: 300px;
+    font-size: 19px;
+    padding: 10px;
+    font-weight: 600;
+    line-height: 29.48px;
   }
-
-  .cta-button button:hover {
-    background-color: #5a38c0;
-  }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-
-    .cta-button button {
-      width: 100%;
-    }
-
-    h2 {
-      font-size: 18px;
-    }
-
-    .final_p {
-      font-size: 13px;
-    }
-
-    .great-news {
-      font-size: 16px;
-    }
-
-    .buyer-info {
-      font-size: 14px;
-    }
-  }
-
-  @media (max-width: 480px) {
-
-    main{
-      padding: 50px 0px 15px 0px;
-    }
-
-
-   .content{
-    padding: 20px 0px 20px 0px;
-   }
-
-   .home-img img {
-    width: 90px;
-   }
-
-   .header{
-    font-size: 18px;
-   }
-   .sub-header{
-    font-size: 18px;
-   }
-
-
-      h2 {
-        font-size: 21px;
-        font-weight: 300;
-        line-height: 30px;
-        
-      }
-
-      .final_p {
-        font-size: 15px;
-        line-height: 13.76px;
-        font-weight: 400;
-        color: #1A293D;
-      }
-
-      .home-amount{
-        font-size: 32px;
-        line-height: 24px;
-        font-weight: 800;
-        color: #777778;
-
-      }
-      .card{
-        margin: 20px;
-      }
-
-      .card h2{
-        color: #854DFC;
-        font-size: 28px;
-        line-height: 28px;
-        font-family: "roboto";
-        font-weight: 800;
-      }
-
-      .great-news {
-        font-size: 32px;
-        font-weight: 600;
-
-      }
-
-      .buyer-info {
-        font-size: 19px;
-        line-height: 32.52px;
-      }
-
-      .cta-button button {
-        font-size: 12px;
-        padding: 10px;
-      }
-  }
+}
